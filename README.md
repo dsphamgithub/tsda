@@ -54,13 +54,50 @@ Stage: build
     pip install 'wandb'
 ```
 
-## Synthetic Dataset Generation Code
+## Synthetic Dataset Generation
+[[download]](https://drive.google.com/file/d/19FuxvFtov2gFGeZEaOndEO3Qb9YkExx8/view?usp=sharing) | The complete collection of datasets used for the above EfficientDet experiments.
 
-- [ ] TODO
+The `test` set directories are equivalent to the original GTDSB test set. The synthetic images used for the `_extended` datasets were taken from the same pool of synthetic images. The `12000_synth_test` synthetic images were generated using the same set of templates and backgrounds  as the `_extended` datasets, but they share no images, i.e. they are independent.
+
+### Traffic Sign Templates
+[[download]](https://drive.google.com/file/d/1kMAPRSOs9RqAtQu6-fUEn1fqkazIC3Kt/view?usp=sharing) | GTSDB classes matched using German [Wikipedia](https://en.wikipedia.org/wiki/Road_signs_in_Germany) and [Wikimedia Commons](https://commons.wikimedia.org/wiki/Historic_road_signs_in_Germany#1992%E2%80%932013) images. Covers 43/43 classes.
+
+### Backgrounds
+[[download]](https://drive.google.com/file/d/1navoOiHRhYhrIGgogp1TMoEg3QczvN85/view?usp=sharing) | 1191 images taken from various sources with no visible traffic sign faces.
+
+A set of 1,191 traffic scene backgrounds gathered from 4 sources were used to generate the synthetic dataset. All were filtered so at to contain no unlabelled real traffic signs. The different sources are described under the below headings.
+
+#### Google Street View
+925 images from countries surrounding Germany pulled from the Google Street View API using Hugo van Kemenade's [random-street-view](https://github.com/hugovk/random-street-view). The breakdown by country is as follows:
+| Code        | Country           | Images  |
+| ------------- |-------------| -----:|
+AUT | Austria | 100
+BEL | Belgium | 100
+CHE | Switzerland | 100
+CZE | Czechia | 100
+DEU | Germany | 25
+DNK | Denmark | 100
+FRA | France | 100
+GBR | United Kingdom | 50
+LUX | Luxembourg | 50
+NLD | Netherlands | 100
+POL | Poland | 100
+
+#### Cityscapes
+191 images from Germany were taken from the [Cityscapes dataset](https://www.cityscapes-dataset.com). They were chosen by automatically filtering out all images containing traffic signs using the ground truth labels provided with the dataset. The code used to do so can be found in `cityscapes_backgrounds.py`.
+
+#### Geograph
+50 images from the UK were manually picked out from [www.geograph.org.uk](https://www.geograph.org.uk). The webpage for each image can be found by searching on the website using the ID in its filename. 48 images were photographed by David Howard and 2 were photographed by Peter Wood. All credit goes to them.
+> © Copyright [David Howard](https://www.geograph.org.uk/profile/6358) and licensed for reuse under [creativecommons.org/licenses/by-sa/2.0](https://creativecommons.org/licenses/by-sa/2.0/)
+
+> © Copyright [Peter Wood](https://www.geograph.org.uk/profile/72434) and licensed for reuse under [creativecommons.org/licenses/by-sa/2.0](https://creativecommons.org/licenses/by-sa/2.0/)
+
+#### Google Images
+25 images, primarily from the UK and Germany, were found using Google Images. Google reverse image search can be used to find the original sources.
 
 ## To-Do List
 
-Excluding what was discussed in the Future Work section of the paper, here are some outstanding tasks yet to be completed. Commits to this repository will be made once fixed.
+Excluding what was discussed in the Future Work section of the paper, here are some outstanding tasks yet to be completed. Commits to this repository will be made once addressed.
 
 - [ ] MMDetection and standalone Keras implementations of **a YOLOv3 TSDA model has been partially implemented**.
 
@@ -70,13 +107,13 @@ Excluding what was discussed in the Future Work section of the paper, here are s
 
 ### DICTA Submission TODO
 
-***Delete this soon***
+***Delete this section when done***
 
 - [ ] Directory for dataset generation code (don't forget damage-related eval code)? If so, leave comment in README here that a subsequent publication will cover further features of code
 
-- [ ] Provide permalinks to the templates and backgrounds used for generating the synthetic dataset (cite Geograph contributors)
+- [x] Provide permalinks to the templates and backgrounds used for generating the synthetic dataset (cite Geograph contributors)
 
-- [ ] Provide permalinks to the exact datasets used in the paper's experiments (5 synth levels and 12000_synth_test)
+- [x] Provide permalinks to the exact datasets used in the paper's experiments (5 synth levels and 12000_synth_test)
 
 - [ ] Provide permalink to the Singularity container and/or container definition (may be able to use Pawsey/Singularity cloud thing)
 

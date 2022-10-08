@@ -130,7 +130,7 @@ efficientdet-d0 {'AP': 0.7523633337951565, 'AP50': 0.9541078420443585, 'AP75': 0
 #SBATCH --nodes=2
 #SBATCH --gres=gpu:2
 #SBATCH --partition=gpuq
-DATASET="NO_DMG_gtsdb_0.25_extended_real_only_test"
+DATASET="0.75-synth_extended"
 EVAL_TYPE="test"  # "test" or "valid"
 MODEL_NAME="efficientdet-d0"
 EXPERIMENT_NAME="efficientdet-d0-1class-NEW"

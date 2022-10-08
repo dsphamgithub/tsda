@@ -8,14 +8,14 @@ These are the training script parameters taken from the `train_pawsey.sh` script
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:2
 #SBATCH --partition=gpuq
-DATASET="gtsdb_0.25_extended_2"
+DATASET="0.75-synth_extended_dmg"
 SINGLE_DIR=false  # true or false; does the dataset have train/val/test subdirs, or just images and annotations
 EVAL_TYPE="test"  # "test" or "valid"
 USE_VALIDATION="false"  # Whether or not to use the EVAL_TYPE data to do validation while training
 MODEL_NAME="efficientdet-d0"
 DMG_SECTORS="4"
 EXPERIMENT_NAME="tsda-m${DMG_SECTORS}-${MODEL_NAME}-lr-003"
-NUM_EPOCHS="1000"
+NUM_EPOCHS="775"
 BATCH_SIZE="16"
 HPARAMS="num_classes=1,learning_rate=0.003,lr_warmup_init=0.0003,mixed_precision=False,anchor_scale=1.5,num_damage_sectors=${DMG_SECTORS},max_level=7,damage_net=True"
 ```
