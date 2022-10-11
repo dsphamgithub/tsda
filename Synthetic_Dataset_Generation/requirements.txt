@@ -1,0 +1,12 @@
+opencv-python==4.5.3.56
+scikit-image==0.18.3
+pillow
+imutils==0.5.4
+pyyaml
+plotly==5.9.0
+tqdm
+scikit-learn
+matplotlib
+pandas
+numpy
+scipy

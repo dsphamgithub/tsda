@@ -1,0 +1,74 @@
+# The width of the square to which sign images will be scaled
+sign_width: 480  # Recommended: 240 or 480 for GTSDB Wikipedia templates
+
+# When to stop the program, in the case that not all the sequential steps are required
+final_op: dataset  # Either 'process', 'damage', 'transform', 'manipulate', or 'dataset'
+
+# Method of image transformation
+# Either '3d_rotation' or 'fixed_affine'
+tform_method: 3d_rotation
+
+# Number of (offline) transformations applied to each damaged sign template
+# `fixed_affine` transformations are ordered by intensity (i.e. t12 is more
+# visually similar to the original image than t1)
+num_transform: 11  # Range (only for `fixed_affine`): [1,11], default: 11
+
+# Parameters for transformation by 3d_rotation
+# tilt: 3D tilt rotation around the X and Y axes
+# Z:    2D clockwise/anti-clockwise rotation
+transforms:  # TODO: Rename to rotation_params? Would need to place `online` elsewhere
+  tilt_SD: 30
+  tilt_range: 70  # Recommended: <=70
+  Z_SD: 45  # Std. dev. for Z axis rotation
+  Z_range: 180  # Max pos/neg value for Z axis rotation
+  online: True  # On-the-fly or not
+  prob: 0.8  # Probability of any rotation for each appliation when online=True
+
+# Method of image manipulation
+# Either 'gamma_exposure_fast', 'gamma_exposure', 'exposure', 'gamma', or 'histogram' (broken)
+man_method: gamma_exposure_fast
+
+# Number of times each damage is applied (online=False) OR relative likelihood of damage type (online=True)
+num_damages: 
+  online: True  # On-the-fly or not
+  no_damage: 2  # Max 1 when online=False
+  quadrant: 1  # Max 4 when online=False
+  big_hole: 1
+  graffiti: 2
+
+# Parameters for the graffiti damage type, each in range (0.0,1.0]
+graffiti:  # Step size between damage levels is determined by num_damages above (relevant when online=False)
+  initial: 0.2  # First target level of damage (relevant when online=False)
+  final: 0.6    # Level of damage to stop at (relevant when online=False)
+  max: 0.8      # Max graffiti coverage (relevant when online=True); uses trunc. norm. with mu=max/4, sd=max/3
+  solid: True   # Whether or not transparency is minimised through only alpha values of 255 and morphological dilation
+
+# Randomization seed (online damage application does not use this seed)
+seed: 7  # Use different seeds for generating train vs. eval datasets
+
+# Prunes the dataset by using a maximum of n images for each
+# background+class+damage combination, selected randomly.
+# In other words, how many images of the same sign class with the same damage
+# but varied shading and angle do you want over the same background image?
+prune_dataset:
+  prune: True
+  max_images: 1
+
+# Parameters defining the annotation type, and whether damage labelling is used
+annotations:
+  type: 'coco'  # Either 'retinanet' or 'coco'
+  damage_labelling: True
+
+# Number of grid cell sectors on each sign, over which damage is calculated
+num_damage_sectors: 4  # Must be a perfect square
+# 'ssim' will calculate structural difference relative to all pixels in each image/sector
+#      This means the magnitude of damage values will be dependent on the shape of the sign (i.e. max < 1.0)
+# BUG: `ssim` doesn't work as intended
+# 'pixel_wise' will calculate the pixel-by-pixel difference only for pixels part of the original sign (i.e. visible)
+damage_measure_method: 'pixel_wise'
+
+# Whether to reuse .npy file in the 'damage' or 'manipulate' intermediate folders.
+# TODO: Clarify functionality when using online damage
+reuse_data: 
+  damage: False
+  manipulate: False

@@ -109,7 +109,7 @@ Excluding what was discussed in the Future Work section of the paper, here are s
 
 ***Delete this section when done***
 
-- [ ] Directory for dataset generation code (don't forget damage-related eval code)? If so, leave comment in README here that a subsequent publication will cover further features of code
+- [x] Directory for dataset generation code (don't forget damage-related eval code)? If so, leave comment in README here that a subsequent publication will cover further features of code
 
 - [x] Provide permalinks to the templates and backgrounds used for generating the synthetic dataset (cite Geograph contributors)
 
