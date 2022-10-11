@@ -4,13 +4,14 @@ By *Kristian Radoš, Jack Downes, Duc-Son Pham,* and *Aneesh Krishna*
 
 Model training information and frozen copy of codebase from a [paper submitted for publication]() in *The International Conference on Digital Image Computing: Techniques and Applications (DICTA) 2022 Sydney*.
 
+- [ ] TODO: Complete hyperlink to paper above when the paper is available
+
 ## Abstract
 > Traffic sign damage monitoring is a practical issue facing large operations all over the world. Despite the scale of traffic sign damage and its consequent impact on public safety, damage audits are performed manually. By automating components of damage assessment we can greatly improve the effectiveness and efficiency of the process and in doing so alleviate its negative impact on traffic safety. In this paper, traffic sign damage assessment is explored as a computer vision problem approached with deep learning. We specifically focus on occlusion-type damages that hinder sign legibility. This paper makes several contributions. Firstly, it provides a comprehensive survey of related work on this problem. Secondly, it provides an extension to the generation of synthetic images for such a study. Most importantly, it proposes an extension of the EfficientDet object detection framework to address the challenge. It is shown that synthetic images can be successfully used to train an object detector variant to assess the level of damage, as measured between 0.0 and 1.0, in traffic signs. The extended framework achieves a damage assessment root mean squared error (RMSE) of 0.087 on a synthetic test set while maintaining a mean average precision (mAP) of 86.3% on the typical sign detection task.
 
 ### BibTex
+- [ ] TODO: Complete when the paper is available
 ```
-TODO
-
 @inproceedings{___,
   title={End-to-End Traffic Sign Damage Assessment},
   author={Radoš, Kristian and Downes, Jack and Pham, Duc-Son and Krishna, Aneesh},
@@ -25,7 +26,7 @@ The code for the EfficientDet models is divided into two directories, `Efficient
 
 See the README in each model directory for experiment training configurations and evaluation results.
 
-All experiments were trained and evaluated on the Pawsey Supercomputer using Singularity containers for reproducibility. The `.def` file is below and the [full container is here]().
+All experiments were trained and evaluated on the Pawsey Supercomputer using Singularity containers for reproducibility. The contents of the `.def` file are below and the [fully built container is available here](https://drive.google.com/file/d/1-bxwuiXSLRqCipo9ZdxuSVcF0MRo-9dd/view?usp=sharing).
 ```
 Bootstrap: docker
 From: nvcr.io/nvidia/tensorflow:21.05-tf2-py3
@@ -104,21 +105,3 @@ Excluding what was discussed in the Future Work section of the paper, here are s
 - [ ] Resolve/merge training script related differences between non-TSDA and TSDA versions of EfficientDet where appropriate.
 
 - [ ] Fix TSDA model with `num_damage_sectors=1` ($m=1$), currently only partially implemented and still has errors.
-
-### DICTA Submission TODO
-
-***Delete this section when done***
-
-- [x] Directory for dataset generation code (don't forget damage-related eval code)? If so, leave comment in README here that a subsequent publication will cover further features of code
-
-- [x] Provide permalinks to the templates and backgrounds used for generating the synthetic dataset (cite Geograph contributors)
-
-- [x] Provide permalinks to the exact datasets used in the paper's experiments (5 synth levels and 12000_synth_test)
-
-- [ ] Provide permalink to the Singularity container and/or container definition (may be able to use Pawsey/Singularity cloud thing)
-
-- [x] Directory for sign detection version of EfficientDet
-
-- [x] Directory for TSDA version of EfficientDet
-
-- [x] Show experiment training details and results in README

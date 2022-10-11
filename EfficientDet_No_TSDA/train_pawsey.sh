@@ -113,7 +113,7 @@ fi
 
 START_TIME=$(date +%s)
 
-IMAGE_PATH="${MYGROUP}/singularity_images/tf_container_2203_efficientdet.sif"
+IMAGE_PATH="${MYGROUP}/singularity_images/tf_container_2105_efficientdet_precise_tf.sif"
 if [ -d "${MYGROUP}/datasets/tfrecords/${DATASET}" ]
 then
     printf "\nFound pre-existing TFRECORD directory\n"
