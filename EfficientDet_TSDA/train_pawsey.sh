@@ -24,7 +24,7 @@ EXPERIMENT_NAME="tsda-m${DMG_SECTORS}-${MODEL_NAME}-lr-003"  # Corresponds to mo
 NUM_EPOCHS="1000"  # If resuming, this will be on top of the original epochs
 BATCH_SIZE="24"  # Auto scales with no. nodes to some degree, but e.g. "24" with 1 node may OOM while it won't with 3
 # Default learning_rate is 0.008
-HPARAMS="num_classes=1,learning_rate=0.003,lr_warmup_init=0.0003,mixed_precision=False,anchor_scale=1.5,num_damage_sectors=${DMG_SECTORS},max_level=7,damage_net=True"
+HPARAMS="num_classes=1,learning_rate=0.003,lr_warmup_init=0.0003,mixed_precision=False,damage_net=True,anchor_scale=1.5,num_damage_sectors=${DMG_SECTORS},max_level=7"
 
 # FIXME: Model doesn't work with num_damage_sectors=1, only works with 4
 

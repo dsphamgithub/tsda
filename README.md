@@ -100,8 +100,8 @@ POL | Poland | 100
 
 Excluding what was discussed in the Future Work section of the paper, here are some outstanding tasks yet to be completed. Commits to this repository will be made once addressed.
 
-- [ ] MMDetection and standalone Keras implementations of **a YOLOv3 TSDA model has been partially implemented**.
-
-- [ ] Resolve/merge training script related differences between non-TSDA and TSDA versions of EfficientDet where appropriate.
+- [x] Experiment using an additional EfficientDet class network damage layer instead of a damage network.
 
 - [ ] Fix TSDA model with `num_damage_sectors=1` ($m=1$), currently only partially implemented and still has errors.
+
+- [ ] MMDetection and standalone Keras implementations of **a YOLOv3 TSDA model have been partially implemented**.
