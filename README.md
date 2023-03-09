@@ -12,7 +12,7 @@ Model training information and frozen copy of codebase from a [paper submitted f
 ### BibTex
 - [ ] TODO: Update when issues with the published paper are fixed (also add link to IEEE Xplore page)
 ```
-@inproceedings{10034587,
+@inproceedings{rados2022end,
   title={End-to-End Traffic Sign Damage Assessment},
   author={Radoš, Kristian and Downes, Jack and Pham, Duc-Son and Krishna, Aneesh},
   booktitle={2022 International Conference on Digital Image Computing: Techniques and Applications (DICTA)},
